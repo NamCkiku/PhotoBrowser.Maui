@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-ios</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+		<IsBindingProject>true</IsBindingProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<NativeReference Include="MWPhotoBrowser.framework">
+			<Kind>Framework</Kind>
+			<SmartLink>False</SmartLink>
+			<Frameworks>ImageIO QuartzCore MediaPlayer AssetsLibrary Foundation AudioToolbox</Frameworks>
+			<WeakFrameworks>AVFoundation</WeakFrameworks>
+		</NativeReference>
+		<NativeReference Include="DACircularProgress.framework">
+			<Kind>Framework</Kind>
+			<SmartLink>False</SmartLink>
+		</NativeReference>
+		<NativeReference Include="MBProgressHUD.framework">
+			<Kind>Framework</Kind>
+			<SmartLink>False</SmartLink>
+		</NativeReference>
+		<NativeReference Include="SDWebImage.framework">
+			<Kind>Framework</Kind>
+			<SmartLink>False</SmartLink>
+		</NativeReference>
+	</ItemGroup>
+</Project>
