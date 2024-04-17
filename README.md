@@ -1,6 +1,6 @@
-# PhotoBrowser.Forms
+# PhotoBrowser.Maui
 
-Full screen image viewer(Xamarin.Forms) that includes "pinch to zoom" and "swipe to dismiss" gestures.
+Full screen image viewer(.NET MAUI) that includes "pinch to zoom" and "swipe to dismiss" gestures.
 
 [![NuGet](https://img.shields.io/nuget/v/PhotoBrowser.Forms.svg)](https://www.nuget.org/packages/PhotoBrowser.Forms/)
 
