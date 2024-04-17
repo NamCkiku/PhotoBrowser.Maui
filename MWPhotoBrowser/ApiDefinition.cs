@@ -5,7 +5,7 @@ using ObjCRuntime;
 using Photos;
 using UIKit;
 
-namespace MWPhotoBrowser
+namespace MWPhotoBrowsers
 {
     // @protocol MWPhoto <NSObject>
     [Protocol, Model]

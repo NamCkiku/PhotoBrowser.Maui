@@ -13,21 +13,25 @@
 	<ItemGroup>
 		<NativeReference Include="MWPhotoBrowser.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>False</SmartLink>
+			<SmartLink>True</SmartLink>
+			<ForceLoad>False</ForceLoad>
 			<Frameworks>ImageIO QuartzCore MediaPlayer AssetsLibrary Foundation AudioToolbox</Frameworks>
 			<WeakFrameworks>AVFoundation</WeakFrameworks>
 		</NativeReference>
 		<NativeReference Include="DACircularProgress.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>False</SmartLink>
+			<SmartLink>True</SmartLink>
+			<ForceLoad>False</ForceLoad>
 		</NativeReference>
 		<NativeReference Include="MBProgressHUD.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>False</SmartLink>
+			<SmartLink>True</SmartLink>
+			<ForceLoad>False</ForceLoad>
 		</NativeReference>
 		<NativeReference Include="SDWebImage.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>False</SmartLink>
+			<SmartLink>True</SmartLink>
+			<ForceLoad>False</ForceLoad>
 		</NativeReference>
 	</ItemGroup>
 </Project>
