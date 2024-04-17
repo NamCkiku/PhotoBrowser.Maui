@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.ViewPager.Widget;
 using PhotoBrowser.Maui.Platforms.Android.ImageGallery;
@@ -19,6 +20,8 @@ namespace GPSMobile.BA
         private GallerySlidePageAdapter _adapter;
         private ViewPager _viewPager;
 
+        protected Android.Widget.ImageButton btnAction;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,6 +37,7 @@ namespace GPSMobile.BA
 
         protected void InitComponents(List<string> urls)
         {
+           
             _adapter = new GallerySlidePageAdapter(this, urls);
             _viewPager = FindViewById<ViewPager>(Resource.Id.pager);
             _viewPager.Adapter = _adapter;
@@ -41,6 +45,13 @@ namespace GPSMobile.BA
             _viewPager.OffscreenPageLimit = 10;
             _viewPager.PageSelected += OnPageSelected;
             _viewPager.PageScrollStateChanged += ViewPager_PageScrollStateChanged;
+
+            btnAction = FindViewById<Android.Widget.ImageButton>(Resource.Id.btnclose);
+
+            btnAction.Click += (o, e) =>
+            {
+               Finish();
+            };
         }
 
         private void ViewPager_PageScrollStateChanged(object sender, ViewPager.PageScrollStateChangedEventArgs e)

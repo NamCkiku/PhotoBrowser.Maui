@@ -4,10 +4,20 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:id="@+id/lauoutpager"
-    android:background="@android:color/black">
+  android:background="@android:color/black">
+
 	<androidx.viewpager.widget.ViewPager
 	  android:id="@+id/pager"
 	  android:layout_width="match_parent"
 	  android:layout_height="match_parent"
 	  android:overScrollMode="never" />
+
+	<ImageButton
+        android:id="@+id/btnclose"
+		android:layout_margin="20dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_close" />
 </RelativeLayout>
