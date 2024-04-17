@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubsamplingScaleImageView",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{429AB521-3622-4667-B1B6-70BF1B0C4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MWPhotoBrowser", "MWPhotoBrowser\MWPhotoBrowser.csproj", "{7E5B807B-92C6-4061-96C5-E9CA95D16478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWPhotoBrowser", "MWPhotoBrowser\MWPhotoBrowser.csproj", "{7E5B807B-92C6-4061-96C5-E9CA95D16478}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47B452C9-84F1-41FC-9894-EFAB86737F85}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
