@@ -19,6 +19,8 @@
     {
         public List<Photo> Photos { get; set; }
 
+        public int StartIndex { get; set; } = 0;
+
         public void Show()
         {
             ServiceHelpers.GetService<IPhotoBrowser>().Show(this);

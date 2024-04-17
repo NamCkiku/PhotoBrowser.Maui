@@ -1,5 +1,4 @@
 ﻿using Foundation;
-using IDMPhotoBrowserBindings;
 using UIKit;
 
 namespace PhotoBrowsers.Platforms.iOS

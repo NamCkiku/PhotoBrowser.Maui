@@ -38,16 +38,14 @@ namespace PhotoBrowsers.Platforms.iOS
 
             MWPhotoBrowser browser = new MWPhotoBrowser(this)
             {
-                EnableGrid = true,
-
-                BrowserBackgroundColor = Colors.Black.ToPlatform(),
-
-                ZoomPhotosToFill = true
-
+                EnableGrid = false,
+                ZoomPhotosToFill = true,
+                DisplaySelectionButtons = false,
+                DisplayActionButton = true,
             };
 
 
-            browser.SetCurrentPhoto((nuint)0);
+            browser.SetCurrentPhoto((nuint)_photoBrowser.StartIndex);
 
 
             var window = UIApplication.SharedApplication.KeyWindow;
@@ -63,7 +61,7 @@ namespace PhotoBrowsers.Platforms.iOS
         public override MWPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
 
         public override nuint NumberOfPhotosInPhotoBrowser(MWPhotoBrowser photoBrowser) => (nuint)_photos.Count;
-
+ 
         public void Close()
         {
             UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);
