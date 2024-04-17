@@ -4,6 +4,9 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>true</ImplicitUsings>
 		<IsBindingProject>true</IsBindingProject>
+		<Optimize>true</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<NoBindingEmbedding>false</NoBindingEmbedding>
 	</PropertyGroup>
 
 	<ItemGroup>
