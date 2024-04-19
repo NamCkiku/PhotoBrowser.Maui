@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0-ios</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <IsBindingProject>true</IsBindingProject>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0-ios</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+		<IsBindingProject>true</IsBindingProject>
+		<Optimize>true</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<NoBindingEmbedding>false</NoBindingEmbedding>
+	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>SDWebImage.Maui.iOS</PackageId>
 		<Title>SDWebImage.Maui.iOS</Title>
@@ -36,7 +39,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -47,10 +50,10 @@
 		<Configurations>Debug;Release</Configurations>
 		<NoWarn>1587,1591</NoWarn>
 	</PropertyGroup>
-  <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+	</ItemGroup>
 	<ItemGroup>
 		<NativeReference Include="SDWebImage.framework">
 			<Kind>Framework</Kind>

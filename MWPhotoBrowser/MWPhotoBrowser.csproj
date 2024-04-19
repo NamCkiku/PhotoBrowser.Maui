@@ -4,6 +4,9 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>true</ImplicitUsings>
 		<IsBindingProject>true</IsBindingProject>
+		<Optimize>true</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<NoBindingEmbedding>false</NoBindingEmbedding>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>MWPhotoBrowser.iOS</PackageId>
@@ -39,7 +42,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -80,6 +83,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Drastic.MBProgressHUD" Version="1.0.0" />
-		<PackageReference Include="SDWebImage.Maui.iOS" Version="1.0.1" />
+		<PackageReference Include="SDWebImage.Maui.iOS" Version="1.0.2" />
 	</ItemGroup>
 </Project>
