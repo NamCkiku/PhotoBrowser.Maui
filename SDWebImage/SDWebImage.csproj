@@ -53,7 +53,7 @@
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<NativeReference Include="SDWebImage.xcframework">
+		<NativeReference Include="SDWebImage.framework">
 			<Kind>Framework</Kind>
 			<SmartLink>True</SmartLink>
 			<ForceLoad>False</ForceLoad>

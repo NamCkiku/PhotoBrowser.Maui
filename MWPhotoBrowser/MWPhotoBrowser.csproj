@@ -82,10 +82,10 @@
 			<Frameworks></Frameworks>
 			<WeakFrameworks>AVFoundation</WeakFrameworks>
 		</NativeReference>
-		<NativeReference Include="DACircularProgress.framework">
+		<!--<NativeReference Include="DACircularProgress.framework">
 			<Kind>Framework</Kind>
 			<Frameworks></Frameworks>
-		</NativeReference>
+		</NativeReference>-->
 		<!--<NativeReference Include="MBProgressHUD.framework">
 			<Kind>Framework</Kind>
 			<SmartLink>True</SmartLink>
