@@ -21,11 +21,6 @@ Supports Android and iOS.
 | ------------- | ---------------
 | ![sample](android.gif) | ![sample](ios.gif)
 
-
-| Table/CollectionView sample | Button tap sample 
-| ------------- | ---------------
-| ![sample](android.gif) | ![sample](ios.gif)
-
 ## Setup
 
 * Install the [nuget package](https://www.nuget.org/packages/PhotoBrowser.Maui) in portable and all platform specific projects.
