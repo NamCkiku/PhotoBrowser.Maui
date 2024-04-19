@@ -17,7 +17,9 @@ Supports Android and iOS.
 
 ## Screen-Shots
 
-<img src="ScreenShots/screenshot_android.gif" alt="PhotoBrowser for Android"/> <img src="ScreenShots/screenshot_ios.gif" alt="PhotoBrowser for iOS"/>
+| Android sample | iOS sample |
+| ------------- | --------------- | --------------|
+| ![sample](android.gif) | ![sample](ios.gif)
 
 ## Setup
 
