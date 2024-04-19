@@ -1,15 +1,59 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0-ios</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <IsBindingProject>true</IsBindingProject>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0-ios</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+		<IsBindingProject>true</IsBindingProject>
+		<Optimize>true</Optimize>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<NoBindingEmbedding>false</NoBindingEmbedding>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PackageId>SDWebImage.Maui.iOS</PackageId>
+		<Title>SDWebImage.Maui.iOS</Title>
+		<Summary>SDWebImage.Maui.iOS library for projects using .NET MAUI iOS</Summary>
+		<Authors>NamCkiku</Authors>
+		<Owners>$(Authors)</Owners>
+		<Company>$(Authors)</Company>
+		<NeutralLanguage>vi-VN</NeutralLanguage>
+		<Product>SDWebImage.Maui.iOS ($(TargetFramework))</Product>
+		<Copyright>Copyright © $([System.DateTime]::Today.ToString(yyyy)) $(Authors)</Copyright>
+		<PackageDescription>$(Description)</PackageDescription>
+		<PackageProjectUrl>https://github.com/NamCkiku/PhotoBrowser.Maui</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>git://github.com/NamCkiku/PhotoBrowser.Maui</RepositoryUrl>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<Description>
+			$(Summary)
+			This library provides an async image downloader with cache support. For convenience, we added categories for UI elements like UIImageView, UIButton, MKAnnotationView - $(PackageId)
+		</Description>
+		<PackageReleaseNotes>
+			Native library: SDWebImage
+		</PackageReleaseNotes>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<FileVersion>$(Version)</FileVersion>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
+		<Version>1.0.2</Version>
+		<VersionPrefix></VersionPrefix>
+		<VersionSuffix></VersionSuffix>
+		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
+		<PackageTags>maui, ios, iOS, SDWebImage,SDWebImage.Maui</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Configurations>Debug;Release</Configurations>
+		<NoWarn>1587,1591</NoWarn>
+	</PropertyGroup>
+	<ItemGroup>
+		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+	</ItemGroup>
 	<ItemGroup>
 		<NativeReference Include="SDWebImage.framework">
 			<Kind>Framework</Kind>
