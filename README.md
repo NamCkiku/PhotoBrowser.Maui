@@ -18,7 +18,12 @@ Supports Android and iOS.
 ## Screen-Shots
 
 | Android sample | iOS sample |
-| ------------- | --------------- | --------------|
+| ------------- | ---------------
+| ![sample](android.gif) | ![sample](ios.gif)
+
+
+| Table/CollectionView sample | Button tap sample 
+| ------------- | ---------------
 | ![sample](android.gif) | ![sample](ios.gif)
 
 ## Setup
