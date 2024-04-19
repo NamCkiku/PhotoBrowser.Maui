@@ -47,7 +47,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -98,7 +98,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
-		<PackageReference Include="MWPhotoBrowser.iOS" Version="1.0.0" />
+		<PackageReference Include="MWPhotoBrowser.iOS" Version="1.0.1" />
 	</ItemGroup>
 
 	<PropertyGroup>

@@ -42,7 +42,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -70,7 +70,7 @@
 			<SmartLink>True</SmartLink>
 			<ForceLoad>False</ForceLoad>
 		</NativeReference>
-		<NativeReference Include="MBProgressHUD.framework">
+		<!--<NativeReference Include="MBProgressHUD.framework">
 			<Kind>Framework</Kind>
 			<SmartLink>True</SmartLink>
 			<ForceLoad>False</ForceLoad>
@@ -79,6 +79,10 @@
 			<Kind>Framework</Kind>
 			<SmartLink>True</SmartLink>
 			<ForceLoad>False</ForceLoad>
-		</NativeReference>
+		</NativeReference>-->
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Drastic.MBProgressHUD" Version="1.0.0" />
+	  <PackageReference Include="SDWebImage.iOS" Version="2.0.0" />
 	</ItemGroup>
 </Project>
