@@ -83,6 +83,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Drastic.MBProgressHUD" Version="1.0.0" />
-	  <PackageReference Include="Tnn.SDWebImage" Version="5.14.3.1" />
+		<ProjectReference Include="..\SDWebImage\SDWebImage.csproj" />
 	</ItemGroup>
 </Project>
