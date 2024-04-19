@@ -1,11 +1,57 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0-android</TargetFramework>
-    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-  <ItemGroup>
-	  <LibraryProjectZip Include="Jars\subsampling-scale-image-view-3.10.0.aar" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0-android</TargetFramework>
+		<SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PackageId>SubsamplingScaleImageView.Android</PackageId>
+		<Title>SubsamplingScaleImageView.Android</Title>
+		<Summary>SubsamplingScaleImageView.Android library for projects using .NET MAUI Android</Summary>
+		<Authors>NamCkiku</Authors>
+		<Owners>$(Authors)</Owners>
+		<Company>$(Authors)</Company>
+		<NeutralLanguage>vi-VN</NeutralLanguage>
+		<Product>SubsamplingScaleImageView.Android ($(TargetFramework))</Product>
+		<Copyright>Copyright © $([System.DateTime]::Today.ToString(yyyy)) $(Authors)</Copyright>
+		<PackageDescription>$(Description)</PackageDescription>
+		<PackageProjectUrl>https://github.com/NamCkiku/PhotoBrowser.Maui</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>git://github.com/NamCkiku/PhotoBrowser.Maui</RepositoryUrl>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<Description>
+			$(Summary)
+			Full screen image viewer(.NET MAUI) that includes "pinch to zoom" and "swipe to dismiss" gestures. - $(PackageId)
+		</Description>
+		<PackageReleaseNotes>
+			Native Library version:
+			Android library from : https://github.com/davemorrissey/subsampling-scale-image-view
+			iOS library from : https://github.com/mwaterfall/MWPhotoBrowser
+			Code improvements have been made.
+			Changes are detailed at https://github.com/NamCkiku/PhotoBrowser.Maui/releases
+		</PackageReleaseNotes>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<FileVersion>$(Version)</FileVersion>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
+		<Version>1.0.0</Version>
+		<VersionPrefix></VersionPrefix>
+		<VersionSuffix></VersionSuffix>
+		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
+		<PackageTags>maui, ios, android, PhotoBrowser,PhotoBrowser.Maui</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Configurations>Debug;Release</Configurations>
+		<NoWarn>1587,1591</NoWarn>
+	</PropertyGroup>
+	<ItemGroup>
+		<LibraryProjectZip Include="Jars\subsampling-scale-image-view-3.10.0.aar" />
+	</ItemGroup>
 </Project>
