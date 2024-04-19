@@ -4,9 +4,28 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>true</ImplicitUsings>
 		<IsBindingProject>true</IsBindingProject>
-		<Optimize>true</Optimize>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug</OutputPath>
+		<DefineConstants>DEBUG;</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<ConsolePause>false</ConsolePause>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<NoBindingEmbedding>false</NoBindingEmbedding>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release</OutputPath>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<ConsolePause>false</ConsolePause>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>MWPhotoBrowser.iOS</PackageId>
@@ -42,7 +61,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.4</Version>
+		<Version>1.0.6</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -60,15 +79,12 @@
 	<ItemGroup>
 		<NativeReference Include="MWPhotoBrowser.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>True</SmartLink>
-			<ForceLoad>False</ForceLoad>
-			<Frameworks>ImageIO QuartzCore MediaPlayer AssetsLibrary Foundation AudioToolbox</Frameworks>
+			<Frameworks></Frameworks>
 			<WeakFrameworks>AVFoundation</WeakFrameworks>
 		</NativeReference>
 		<NativeReference Include="DACircularProgress.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>True</SmartLink>
-			<ForceLoad>False</ForceLoad>
+			<Frameworks></Frameworks>
 		</NativeReference>
 		<!--<NativeReference Include="MBProgressHUD.framework">
 			<Kind>Framework</Kind>
@@ -83,6 +99,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Drastic.MBProgressHUD" Version="1.0.0" />
-		<PackageReference Include="SDWebImage.Maui.iOS" Version="1.0.2" />
+		<ProjectReference Include="..\SDWebImage\SDWebImage.csproj" />
 	</ItemGroup>
 </Project>

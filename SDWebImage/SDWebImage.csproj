@@ -4,9 +4,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>true</ImplicitUsings>
 		<IsBindingProject>true</IsBindingProject>
-		<Optimize>true</Optimize>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<NoBindingEmbedding>false</NoBindingEmbedding>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>SDWebImage.Maui.iOS</PackageId>
@@ -39,7 +37,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -55,7 +53,7 @@
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<NativeReference Include="SDWebImage.framework">
+		<NativeReference Include="SDWebImage.xcframework">
 			<Kind>Framework</Kind>
 			<SmartLink>True</SmartLink>
 			<ForceLoad>False</ForceLoad>
