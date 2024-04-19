@@ -42,6 +42,7 @@ namespace PhotoBrowsers.Platforms.iOS
                 ZoomPhotosToFill = true,
                 DisplaySelectionButtons = false,
                 DisplayActionButton = true,
+                AlwaysShowControls = true,
             };
 
 

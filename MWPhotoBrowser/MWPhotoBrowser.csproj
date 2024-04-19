@@ -42,7 +42,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -83,6 +83,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Drastic.MBProgressHUD" Version="1.0.0" />
-	  <PackageReference Include="SDWebImage.iOS" Version="2.0.0" />
+	  <PackageReference Include="Tnn.SDWebImage" Version="5.14.3.1" />
 	</ItemGroup>
 </Project>
