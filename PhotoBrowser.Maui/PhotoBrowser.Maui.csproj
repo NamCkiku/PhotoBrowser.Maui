@@ -98,6 +98,9 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
-		<ProjectReference Include="..\MWPhotoBrowser\MWPhotoBrowser.csproj" />
+		<PackageReference Include="IDMPhotoBrowserBindings">
+		  <Version>1.11.3.2</Version>
+		</PackageReference>
+		<!--<ProjectReference Include="..\MWPhotoBrowser\MWPhotoBrowser.csproj" />-->
 	</ItemGroup>
 </Project>
