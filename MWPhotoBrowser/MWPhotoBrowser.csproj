@@ -99,7 +99,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Drastic.MBProgressHUD" Version="1.0.0" />
-		<PackageReference Include="SDWebImage" Version="1.0.0" />
+		<ProjectReference Include="..\SDWebImage\SDWebImage.csproj" />
 		<!--<PackageReference Include="Drastic.SVProgressHUD" Version="1.0.1" />-->
 		<!--<PackageReference Include="Tnn.SDWebImage" Version="5.14.3.1" />-->
 	</ItemGroup>
