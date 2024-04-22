@@ -25,17 +25,72 @@
 
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-		<CreatePackage>false</CreatePackage>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+		<DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<CodesignKey>iPhone Developer</CodesignKey>
+		<MtouchDebug>true</MtouchDebug>
+		<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+		<MtouchFastDev>true</MtouchFastDev>
+		<MtouchProfiling>true</MtouchProfiling>
+		<IOSDebuggerPort>62315</IOSDebuggerPort>
 		<MtouchLink>SdkOnly</MtouchLink>
-		<ForceSimulatorX64ArchitectureInIDE>true</ForceSimulatorX64ArchitectureInIDE>
-		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+		<MtouchArch>x86_64</MtouchArch>
+		<MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+		<DeviceSpecificBuild>false</DeviceSpecificBuild>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-		<CreatePackage>false</CreatePackage>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\iPhone\Release</OutputPath>
+		<DefineConstants></DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<CodesignKey>iPhone Developer</CodesignKey>
+		<MtouchFloat32>true</MtouchFloat32>
+		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
 		<MtouchLink>SdkOnly</MtouchLink>
-		<ForceSimulatorX64ArchitectureInIDE>true</ForceSimulatorX64ArchitectureInIDE>
-		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+		<MtouchArch>ARM64</MtouchArch>
+		<MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+		<DefineConstants></DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<CodesignKey>iPhone Developer</CodesignKey>
+		<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+		<MtouchLink>None</MtouchLink>
+		<MtouchArch>x86_64</MtouchArch>
+		<MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\iPhone\Debug</OutputPath>
+		<DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<CodesignKey>iPhone Developer</CodesignKey>
+		<DeviceSpecificBuild>true</DeviceSpecificBuild>
+		<MtouchDebug>true</MtouchDebug>
+		<MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+		<MtouchFastDev>true</MtouchFastDev>
+		<MtouchProfiling>true</MtouchProfiling>
+		<MtouchFloat32>true</MtouchFloat32>
+		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+		<IOSDebuggerPort>55951</IOSDebuggerPort>
+		<MtouchLink>SdkOnly</MtouchLink>
+		<MtouchArch>ARM64</MtouchArch>
+		<MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
 	</PropertyGroup>
 	
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true ">

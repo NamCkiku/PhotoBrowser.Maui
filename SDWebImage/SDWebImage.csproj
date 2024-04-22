@@ -4,7 +4,24 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>true</ImplicitUsings>
 		<IsBindingProject>true</IsBindingProject>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug</OutputPath>
+		<DefineConstants>DEBUG;</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release</OutputPath>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PackageId>SDWebImage.Maui.iOS</PackageId>
@@ -55,8 +72,7 @@
 	<ItemGroup>
 		<NativeReference Include="SDWebImage.framework">
 			<Kind>Framework</Kind>
-			<SmartLink>True</SmartLink>
-			<ForceLoad>False</ForceLoad>
+			<SmartLink>False</SmartLink>
 		</NativeReference>
 	</ItemGroup>
 </Project>
