@@ -1,0 +1,11 @@
+framework module SKPhotoBrowser {
+  umbrella header "SKPhotoBrowser.h"
+
+  export *
+  module * { export * }
+}
+
+module SKPhotoBrowser.Swift {
+    header "SKPhotoBrowser-Swift.h"
+    requires objc
+}

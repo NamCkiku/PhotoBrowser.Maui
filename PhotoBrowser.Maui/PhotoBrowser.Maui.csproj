@@ -99,10 +99,6 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
 		<ProjectReference Include="..\MWPhotoBrowser\MWPhotoBrowser.csproj" />
+		<ProjectReference Include="..\SKPhotoBrowser\SKPhotoBrowser.csproj" />
 	</ItemGroup>
-
-
-	<PropertyGroup>
-		<_ResolveReferenceDependencies>true</_ResolveReferenceDependencies>
-	</PropertyGroup>
 </Project>
