@@ -1,7 +1,6 @@
 ﻿using IDMPhotoBrowserBindings;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Platform;
-using MWPhotoBrowsers;
 using PhotoBrowsers;
 using System;
 using System.Collections.Generic;
@@ -29,12 +28,16 @@ namespace PhotoBrowsers.Platforms.iOS
 
             foreach (Photo p in _photoBrowser.Photos)
             {
-                IDMPhoto mp =new IDMPhoto(new Foundation.NSUrl(p.URL));
+                IDMPhoto mp = new IDMPhoto(new Foundation.NSUrl(p.URL));
 
                 _photos.Add(mp);
             }
 
             IDMPhotoBrowser browser = new IDMPhotoBrowser(_photos.ToArray());
+            browser.SetInitialPageIndex((uint)_photoBrowser.StartIndex);
+            browser.DisplayDoneButton = true;
+            browser.UsePopAnimation = true;
+            browser.DisplayToolbar = true;
             var window = UIApplication.SharedApplication.KeyWindow;
             var vc = window.RootViewController;
             while (vc.PresentedViewController != null)
@@ -52,7 +55,7 @@ namespace PhotoBrowsers.Platforms.iOS
         //public override MWPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
 
         //public override nuint NumberOfPhotosInPhotoBrowser(MWPhotoBrowser photoBrowser) => (nuint)_photos.Count;
- 
+
         public void Close()
         {
             UIApplication.SharedApplication.KeyWindow.RootViewController.DismissViewController(true, null);

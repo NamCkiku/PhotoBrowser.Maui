@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-ios</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+		<IsBindingProject>true</IsBindingProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Update="libs\*.a" Visible="False" />
+	</ItemGroup>
+	<ItemGroup>
+		<NativeReference Include="libs\DACircularProgress.a">
+			<Kind>Static</Kind>
+			<ForceLoad>True</ForceLoad>
+			<LinkerFlags>-ObjC</LinkerFlags>
+			<Frameworks>QuartzCore</Frameworks>
+		</NativeReference>
+		<NativeReference Include="libs\IDMPhotoBrowser.a">
+			<Kind>Static</Kind>
+			<ForceLoad>True</ForceLoad>
+			<LinkerFlags>-ObjC</LinkerFlags>
+			<Frameworks>MessageUI QuartzCore SystemConfiguration MobileCoreServices Security</Frameworks>
+		</NativeReference>
+		<NativeReference Include="libs\Pop.a">
+			<Kind>Static</Kind>
+			<ForceLoad>True</ForceLoad>
+			<IsCxx>True</IsCxx>
+			<LinkerFlags>-ObjC</LinkerFlags>
+		</NativeReference>
+		<NativeReference Include="libs\SDWebImage.a">
+			<Kind>Static</Kind>
+			<ForceLoad>True</ForceLoad>
+			<LinkerFlags>-ObjC</LinkerFlags>
+			<Frameworks>ImageIO</Frameworks>
+		</NativeReference>
+	</ItemGroup>
+</Project>
