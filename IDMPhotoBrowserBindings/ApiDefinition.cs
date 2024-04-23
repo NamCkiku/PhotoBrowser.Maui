@@ -1,3 +1,8 @@
+using System;
+using UIKit;
+using Foundation;
+using ObjCRuntime;
+
 namespace IDMPhotoBrowserBindings
 {
 
