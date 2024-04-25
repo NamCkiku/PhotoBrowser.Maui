@@ -47,7 +47,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.8</Version>
+		<Version>1.0.9</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -98,7 +98,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
-		<ProjectReference Include="..\IDMPhotoBrowserBindings\IDMPhotoBrowserBindings.csproj" />
-		<!--<ProjectReference Include="..\MWPhotoBrowser\MWPhotoBrowser.csproj" />-->
+		<!--<PackageReference Include="IDMPhotoBrowser.iOS" Version="1.0.0" />-->
+		<ProjectReference Include="..\MWPhotoBrowserBinding\MWPhotoBrowserBinding.csproj" />
 	</ItemGroup>
 </Project>

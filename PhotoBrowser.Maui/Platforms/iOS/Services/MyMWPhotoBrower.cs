@@ -1,4 +1,4 @@
-﻿using IDMPhotoBrowserBindings;
+﻿using MWPhotoBrowserBinding;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Platform;
 using PhotoBrowsers;
@@ -11,11 +11,11 @@ using UIKit;
 
 namespace PhotoBrowsers.Platforms.iOS
 {
-    public class MyMWPhotoBrower : IDMPhotoBrowserDelegate
+    public class MyMWPhotoBrower : MWPhotoBrowserDelegate
     {
         protected PhotoBrowser _photoBrowser;
 
-        protected List<IDMPhoto> _photos = new List<IDMPhoto>();
+        protected List<MWPhoto> _photos = new List<MWPhoto>();
 
         public MyMWPhotoBrower(PhotoBrowser photoBrowser)
         {
@@ -24,20 +24,31 @@ namespace PhotoBrowsers.Platforms.iOS
 
         public void Show()
         {
-            _photos = new List<IDMPhoto>();
+            _photos = new List<MWPhoto>();
 
             foreach (Photo p in _photoBrowser.Photos)
             {
-                IDMPhoto mp = new IDMPhoto(new Foundation.NSUrl(p.URL));
+                MWPhoto mp = MWPhoto.FromUrl(new Foundation.NSUrl(p.URL));
+
+                if (!string.IsNullOrWhiteSpace(p.Title))
+                    mp.Caption = p.Title;
 
                 _photos.Add(mp);
             }
 
-            IDMPhotoBrowser browser = new IDMPhotoBrowser(_photos.ToArray());
-            browser.SetInitialPageIndex((uint)_photoBrowser.StartIndex);
-            browser.DisplayDoneButton = true;
-            browser.UsePopAnimation = true;
-            browser.DisplayToolbar = true;
+            MWPhotoBrowser browser = new MWPhotoBrowser(this)
+            {
+                EnableGrid = false,
+                ZoomPhotosToFill = true,
+                DisplaySelectionButtons = false,
+                DisplayActionButton = true,
+                AlwaysShowControls = true,
+            };
+
+
+            browser.SetCurrentPhoto((nuint)_photoBrowser.StartIndex);
+
+
             var window = UIApplication.SharedApplication.KeyWindow;
             var vc = window.RootViewController;
             while (vc.PresentedViewController != null)
@@ -47,14 +58,10 @@ namespace PhotoBrowsers.Platforms.iOS
 
             vc.PresentViewController(new UINavigationController(browser), true, null);
         }
-        public override void OnDismissed(IDMPhotoBrowser controller, nuint index)
-        {
-            base.OnDismissed(controller, index);
-        }
 
-        //public override MWPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
+        public override MWPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
 
-        //public override nuint NumberOfPhotosInPhotoBrowser(MWPhotoBrowser photoBrowser) => (nuint)_photos.Count;
+        public override nuint NumberOfPhotosInPhotoBrowser(MWPhotoBrowser photoBrowser) => (nuint)_photos.Count;
 
         public void Close()
         {

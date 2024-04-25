@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDMPhotoBrowserBindings", "IDMPhotoBrowserBindings\IDMPhotoBrowserBindings.csproj", "{6F7A9C95-054F-4036-ABCA-557FC57D5264}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWPhotoBrowserBinding", "MWPhotoBrowserBinding\MWPhotoBrowserBinding.csproj", "{F79F4D10-882E-4EE5-ACE0-0F683F4B8776}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{6F7A9C95-054F-4036-ABCA-557FC57D5264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F7A9C95-054F-4036-ABCA-557FC57D5264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F7A9C95-054F-4036-ABCA-557FC57D5264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79F4D10-882E-4EE5-ACE0-0F683F4B8776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79F4D10-882E-4EE5-ACE0-0F683F4B8776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79F4D10-882E-4EE5-ACE0-0F683F4B8776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79F4D10-882E-4EE5-ACE0-0F683F4B8776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{2E7FEF70-AA72-4C94-8B01-3850E0A2782A} = {372757CF-0F64-47B7-8369-B19D1E15B90C}
 		{429AB521-3622-4667-B1B6-70BF1B0C4817} = {5189D7A2-698B-4E3B-A8AC-84744CA04F71}
 		{6F7A9C95-054F-4036-ABCA-557FC57D5264} = {429AB521-3622-4667-B1B6-70BF1B0C4817}
+		{F79F4D10-882E-4EE5-ACE0-0F683F4B8776} = {429AB521-3622-4667-B1B6-70BF1B0C4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06CDF9AD-B089-4B07-B096-3AA950E1E40E}
