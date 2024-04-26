@@ -15,7 +15,7 @@ using Resource = Microsoft.Maui.Resource;
 
 namespace GPSMobile.BA
 {
-    [Activity(Label = "GallerySlideActivity")]
+    [Activity(Label = "")]
     public class GallerySlideActivity : Activity
     {
         private GallerySlidePageAdapter _adapter;
@@ -27,10 +27,12 @@ namespace GPSMobile.BA
         {
             base.OnCreate(savedInstanceState);
             var uiOptions =
-                 SystemUiFlags.HideNavigation |
-                 SystemUiFlags.LayoutHideNavigation |
-                 SystemUiFlags.LayoutStable |
-                 SystemUiFlags.ImmersiveSticky;
+                        SystemUiFlags.HideNavigation |
+                        SystemUiFlags.LayoutHideNavigation |
+                        SystemUiFlags.LayoutFullscreen |
+                        SystemUiFlags.Fullscreen |
+                        SystemUiFlags.LayoutStable |
+                        SystemUiFlags.ImmersiveSticky;
 
             Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 

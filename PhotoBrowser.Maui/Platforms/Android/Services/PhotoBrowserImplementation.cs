@@ -8,7 +8,6 @@ using Microsoft.Maui;
 using Microsoft.Maui.Platform;
 using PhotoBrowser.Maui.Platforms.Android;
 using PhotoBrowser.Maui.Platforms.Android.ImageGallery;
-using SkiaSharp;
 using Resource = Microsoft.Maui.Resource;
 using Application = Android.App.Application;
 using Android.OS;
