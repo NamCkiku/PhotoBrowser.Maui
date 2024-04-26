@@ -3,6 +3,8 @@ using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using Com.Davemorrissey.Labs.Subscaleview;
+using FFImageLoading.Helpers;
+using FFImageLoading;
 using System.Net;
 using JObject = Java.Lang.Object;
 
@@ -46,14 +48,20 @@ namespace PhotoBrowser.Maui.Platforms.Android.ImageGallery
             container.RemoveView((global::Android.Views.View)view);
         }
 
-        private async void BindView(global::Android.Views.View view, int listPosition)
+        private void BindView(global::Android.Views.View view, int listPosition)
         {
             var galleryImageView = view.FindViewById<Com.Davemorrissey.Labs.Subscaleview.SubsamplingScaleImageView>(Resource.Id.galleryImageView);
             galleryImageView.SetMinimumDpi(MaxZoom);
 
             var imageUrl = _pages[listPosition];
-            var bitmap = await GetImageBitmapFromUrl(imageUrl);
-            galleryImageView.SetImage(Com.Davemorrissey.Labs.Subscaleview.ImageSource.ForBitmap(bitmap));
+
+            IImageService _imageService = ServiceHelper.GetService<IImageService>();
+
+            ImageService.Instance
+                    .LoadUrl(imageUrl)
+                    .WithCache(FFImageLoading.Cache.CacheType.Disk)
+                    .IntoAsync(new SImageViewTarget(galleryImageView), _imageService);
+
             var activityIndicatorView = view.FindViewById<global::Android.Widget.ProgressBar>(Resource.Id.activityIndicatorView);
             if (!galleryImageView.IsImageLoaded)
             {
@@ -67,22 +75,6 @@ namespace PhotoBrowser.Maui.Platforms.Android.ImageGallery
                 }
             };
             galleryImageView.Click += GalleryImageView_Click;
-        }
-
-        private async Task<Bitmap> GetImageBitmapFromUrl(string url)
-        {
-            Bitmap imageBitmap = null;
-
-            using (var webClient = new HttpClient())
-            {
-                var imageBytes = await webClient.GetByteArrayAsync(url);
-                if (imageBytes != null && imageBytes.Length > 0)
-                {
-                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
-                }
-            }
-
-            return imageBitmap;
         }
 
         private void GalleryImageView_Click(object sender, EventArgs e)

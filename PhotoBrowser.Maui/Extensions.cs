@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.LifecycleEvents;
+﻿using FFImageLoading.Maui;
+using Microsoft.Maui.LifecycleEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace PhotoBrowsers
             builder.Services.AddSingleton<IPhotoBrowser, PhotoBrowsers.Platforms.iOS.PhotoBrowserImplementation>();
 #endif
             builder.Services.AddSingleton<IMauiInitializeService, ServiceHelpers>();
+            builder.UseFFImageLoading();
             return builder;
         }
     }
