@@ -14,7 +14,7 @@ using Resource = Microsoft.Maui.Resource;
 
 namespace GPSMobile.BA
 {
-    [Activity(Label = "GallerySlideActivity")]
+    [Activity(Theme = "@style/MainTheme", Label = "GallerySlideActivity")]
     public class GallerySlideActivity : AppCompatActivity
     {
         private GallerySlidePageAdapter _adapter;
@@ -37,7 +37,7 @@ namespace GPSMobile.BA
 
         protected void InitComponents(List<string> urls)
         {
-           
+
             _adapter = new GallerySlidePageAdapter(this, urls);
             _viewPager = FindViewById<ViewPager>(Resource.Id.pager);
             _viewPager.Adapter = _adapter;
@@ -50,7 +50,7 @@ namespace GPSMobile.BA
 
             btnAction.Click += (o, e) =>
             {
-               Finish();
+                Finish();
             };
         }
 
