@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.ViewPager.Widget;
@@ -14,8 +15,8 @@ using Resource = Microsoft.Maui.Resource;
 
 namespace GPSMobile.BA
 {
-    [Activity(Theme = "@style/MainTheme", Label = "GallerySlideActivity")]
-    public class GallerySlideActivity : AppCompatActivity
+    [Activity(Label = "GallerySlideActivity")]
+    public class GallerySlideActivity : Activity
     {
         private GallerySlidePageAdapter _adapter;
         private ViewPager _viewPager;
@@ -25,6 +26,13 @@ namespace GPSMobile.BA
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            var uiOptions =
+                 SystemUiFlags.HideNavigation |
+                 SystemUiFlags.LayoutHideNavigation |
+                 SystemUiFlags.LayoutStable |
+                 SystemUiFlags.ImmersiveSticky;
+
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
 
             SetContentView(Resource.Layout.gallery_slide);
             Intent myIntent = this.Intent;
