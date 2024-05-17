@@ -7,11 +7,10 @@ using UIKit;
 
 namespace MWPhotoBrowserBinding
 {
-    interface IPhoto { }
-
     // @protocol MWPhoto <NSObject>
-    [Protocol(Name = "MWPhoto")]
-    interface Photo
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface IMWPhoto
     {
         // @required @property (nonatomic, strong) UIImage * underlyingImage;
         [Abstract]
@@ -35,7 +34,7 @@ namespace MWPhotoBrowserBinding
 
         // @optional @property (nonatomic) BOOL emptyImage;
         [Export("emptyImage")]
-        bool IsEmptyImage { get; set; }
+        bool EmptyImage { get; set; }
 
         // @optional @property (nonatomic) BOOL isVideo;
         [Export("isVideo")]
@@ -43,7 +42,7 @@ namespace MWPhotoBrowserBinding
 
         // @optional -(void)getVideoURL:(void (^)(NSURL *))completion;
         [Export("getVideoURL:")]
-        void GetVideoUrl(Action<NSUrl> completion);
+        void GetVideoURL(Action<NSUrl> completion);
 
         // @optional -(NSString *)caption;
         [Export("caption")]
@@ -54,27 +53,9 @@ namespace MWPhotoBrowserBinding
         void CancelAnyLoading();
     }
 
-    // @interface MWCaptionView : UIToolbar
-    [BaseType(typeof(UIToolbar), Name = "MWCaptionView")]
-    interface CaptionView
-    {
-        // -(id)initWithPhoto:(id<MWPhoto>)photo;
-        [Export("initWithPhoto:")]
-        IntPtr Constructor(IPhoto photo);
-
-        // -(void)setupCaption;
-        [Export("setupCaption")]
-        void SetupCaption();
-
-        // -(CGSize)sizeThatFits:(CGSize)size;
-        [Override]
-        [Export("sizeThatFits:")]
-        CGSize SizeThatFits(CGSize size);
-    }
-
     // @interface MWPhoto : NSObject <MWPhoto>
-    [BaseType(typeof(NSObject), Name = "MWPhoto")]
-    interface PhotoBrowserPhoto : Photo
+    [BaseType(typeof(NSObject))]
+    interface MWPhoto : IMWPhoto
     {
         // @property (nonatomic, strong) NSString * caption;
         [Export("caption", ArgumentSemantic.Strong)]
@@ -82,11 +63,11 @@ namespace MWPhotoBrowserBinding
 
         // @property (nonatomic, strong) NSURL * videoURL;
         [Export("videoURL", ArgumentSemantic.Strong)]
-        NSUrl VideoUrl { get; set; }
+        NSUrl VideoURL { get; set; }
 
         // @property (nonatomic) BOOL emptyImage;
         [Export("emptyImage")]
-        bool IsEmptyImage { get; set; }
+        bool EmptyImage { get; set; }
 
         // @property (nonatomic) BOOL isVideo;
         [Export("isVideo")]
@@ -95,69 +76,50 @@ namespace MWPhotoBrowserBinding
         // +(MWPhoto *)photoWithImage:(UIImage *)image;
         [Static]
         [Export("photoWithImage:")]
-        PhotoBrowserPhoto FromImage(UIImage image);
+        MWPhoto FromImage(UIImage image);
 
         // +(MWPhoto *)photoWithURL:(NSURL *)url;
         [Static]
         [Export("photoWithURL:")]
-        PhotoBrowserPhoto FromUrl(NSUrl url);
+        MWPhoto FromUrl(NSUrl url);
 
         // +(MWPhoto *)photoWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize;
         [Static]
         [Export("photoWithAsset:targetSize:")]
-        PhotoBrowserPhoto FromAsset(PHAsset asset, CGSize targetSize);
+        MWPhoto FromPhotoAsset(PHAsset asset, CGSize targetSize);
 
         // +(MWPhoto *)videoWithURL:(NSURL *)url;
         [Static]
         [Export("videoWithURL:")]
-        PhotoBrowserPhoto FromVideoUrl(NSUrl url);
-
-
-        //		// -(id)initWithImage:(UIImage *)image;
-        //		[Export ("initWithImage:")]
-        //		IntPtr Constructor (UIImage image);
-        //
-        //		// -(id)initWithURL:(NSURL *)url;
-        //		[Export ("initWithURL:")]
-        //		IntPtr Constructor (NSUrl url);
-        //
-        //		// -(id)initWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize;
-        //		[Export ("initWithAsset:targetSize:")]
-        //		IntPtr Constructor (PHAsset asset, CGSize targetSize);
-        //
-        //		// -(id)initWithVideoURL:(NSURL *)url;
-        //		[Export ("initWithVideoURL:")]
-        //		IntPtr Constructor (NSUrl url);
+        MWPhoto FromVideoUrl(NSUrl url);
     }
-
-    interface IPhotoBrowserDelegate { }
 
     // @protocol MWPhotoBrowserDelegate <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "MWPhotoBrowserDelegate")]
-    interface PhotoBrowserDelegate
+    [BaseType(typeof(NSObject))]
+    interface MWPhotoBrowserDelegate
     {
         // @required -(NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
         [Abstract]
         [Export("numberOfPhotosInPhotoBrowser:")]
-        nuint GetPhotoCount(MWPhotoBrowser photoBrowser);
+        nuint NumberOfPhotosInPhotoBrowser(MWPhotoBrowser photoBrowser);
 
         // @required -(id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
         [Abstract]
         [Export("photoBrowser:photoAtIndex:")]
-        IPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index);
+        MWPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:thumbPhotoAtIndex:")]
-        IPhoto GetThumbnail(MWPhotoBrowser photoBrowser, nuint index);
+        MWPhoto GetThumbnail(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:captionViewForPhotoAtIndex:")]
-        CaptionView GetCaptionView(MWPhotoBrowser photoBrowser, nuint index);
+        MWCaptionView GetCaptionViewForPhoto(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:titleForPhotoAtIndex:")]
-        string GetTitle(MWPhotoBrowser photoBrowser, nuint index);
+        string GetTitleForPhoto(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:didDisplayPhotoAtIndex:")]
@@ -178,15 +140,28 @@ namespace MWPhotoBrowserBinding
         // @optional -(void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser;
         [Export("photoBrowserDidFinishModalPresentation:")]
         void DidFinishModalPresentation(MWPhotoBrowser photoBrowser);
+
+        // @optional -(void)showActivityViewController:(id)items;
+        [Export("showActivityViewController:")]
+        void ShowActivityViewController(NSObject items);
     }
 
+    partial interface IMWPhotoBrowserDelegate { }
+
     // @interface MWPhotoBrowser : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
-    [BaseType(typeof(UIViewController), Name = "MWPhotoBrowser")]
+    [BaseType(typeof(UIViewController))]
     interface MWPhotoBrowser : IUIScrollViewDelegate, IUIActionSheetDelegate
     {
-        // @property (nonatomic, weak) id<MWPhotoBrowserDelegate> _Nullable delegate __attribute__((iboutlet));
+        [Wrap("WeakDelegate")]
+        MWPhotoBrowserDelegate Delegate { get; set; }
+
+        // @property (nonatomic, weak) id<MWPhotoBrowserDelegate> delegate __attribute__((iboutlet));
         [NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
-        IPhotoBrowserDelegate Delegate { get; set; }
+        NSObject WeakDelegate { get; set; }
+
+        // @property (nonatomic) UIColor * browserBackgroundColor;
+        [Export("browserBackgroundColor", ArgumentSemantic.Assign)]
+        UIColor BrowserBackgroundColor { get; set; }
 
         // @property (nonatomic) BOOL zoomPhotosToFill;
         [Export("zoomPhotosToFill")]
@@ -229,7 +204,8 @@ namespace MWPhotoBrowserBinding
         nuint DelayToHideElements { get; set; }
 
         // @property (readonly, nonatomic) NSUInteger currentIndex;
-        nuint CurrentIndex { [Export("currentIndex")] get; [Export("setCurrentPhotoIndex:")] set; }
+        [Export("currentIndex")]
+        nuint CurrentIndex { get; }
 
         // @property (nonatomic, strong) NSString * customImageSelectedIconName;
         [Export("customImageSelectedIconName", ArgumentSemantic.Strong)]
@@ -241,15 +217,19 @@ namespace MWPhotoBrowserBinding
 
         // -(id)initWithPhotos:(NSArray *)photosArray;
         [Export("initWithPhotos:")]
-        IntPtr Constructor(IPhoto[] photosArray);
+        IntPtr Constructor(MWPhoto[] photosArray);
 
         // -(id)initWithDelegate:(id<MWPhotoBrowserDelegate>)delegate;
         [Export("initWithDelegate:")]
-        IntPtr Constructor(IPhotoBrowserDelegate @delegate);
+        IntPtr Constructor(IMWPhotoBrowserDelegate @delegate);
 
         // -(void)reloadData;
         [Export("reloadData")]
         void ReloadData();
+
+        // -(void)setCurrentPhotoIndex:(NSUInteger)index;
+        [Export("setCurrentPhotoIndex:")]
+        void SetCurrentPhoto(nuint index);
 
         // -(void)showNextPhotoAnimated:(BOOL)animated;
         [Export("showNextPhotoAnimated:")]
@@ -261,8 +241,8 @@ namespace MWPhotoBrowserBinding
     }
 
     // @interface MWGridViewController : UICollectionViewController
-    [BaseType(typeof(UICollectionViewController), Name = "MWGridViewController")]
-    interface GridViewController
+    [BaseType(typeof(UICollectionViewController))]
+    interface MWGridViewController
     {
         // @property (assign, nonatomic) MWPhotoBrowser * browser;
         [Export("browser", ArgumentSemantic.Assign)]
@@ -281,50 +261,22 @@ namespace MWPhotoBrowserBinding
         void AdjustOffsetsAsRequired();
     }
 
-    // @interface MWGridCell : UICollectionViewCell
-    [BaseType(typeof(UICollectionViewCell), Name = "MWGridCell")]
-    interface GridCell
-    {
-        // @property (nonatomic, weak) MWGridViewController * _Nullable gridController;
-        [NullAllowed, Export("gridController", ArgumentSemantic.Weak)]
-        GridViewController GridController { get; set; }
-
-        // @property (nonatomic) NSUInteger index;
-        [Export("index")]
-        nuint Index { get; set; }
-
-        // @property (nonatomic) id<MWPhoto> photo;
-        [Export("photo", ArgumentSemantic.Assign)]
-        IPhoto Photo { get; set; }
-
-        // @property (nonatomic) BOOL selectionMode;
-        [Export("selectionMode")]
-        bool SelectionMode { get; set; }
-
-        // @property (nonatomic) BOOL isSelected;
-        [Export("isSelected")]
-        bool IsSelected { get; set; }
-
-        // -(void)displayImage;
-        [Export("displayImage")]
-        void DisplayImage();
-    }
-
     // @interface MWTapDetectingImageView : UIImageView
-    [BaseType(typeof(UIImageView), Name = "MWTapDetectingImageView")]
-    interface TapDetectingImageView
+    [BaseType(typeof(UIImageView))]
+    interface MWTapDetectingImageView
     {
-        // @property (nonatomic, weak) id<MWTapDetectingImageViewDelegate> _Nullable tapDelegate;
-        [NullAllowed, Export("tapDelegate", ArgumentSemantic.Weak)]
-        ITapDetectingImageViewDelegate TapDelegate { get; set; }
-    }
+        [Wrap("WeakTapDelegate")]
+        IMWTapDetectingImageViewDelegate TapDelegate { get; set; }
 
-    interface ITapDetectingImageViewDelegate { }
+        // @property (nonatomic, weak) id<MWTapDetectingImageViewDelegate> tapDelegate;
+        [NullAllowed, Export("tapDelegate", ArgumentSemantic.Weak)]
+        NSObject WeakTapDelegate { get; set; }
+    }
 
     // @protocol MWTapDetectingImageViewDelegate <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "MWTapDetectingImageViewDelegate")]
-    interface TapDetectingImageViewDelegate
+    [BaseType(typeof(NSObject))]
+    interface IMWTapDetectingImageViewDelegate
     {
         // @optional -(void)imageView:(UIImageView *)imageView singleTapDetected:(UITouch *)touch;
         [Export("imageView:singleTapDetected:")]
@@ -340,20 +292,21 @@ namespace MWPhotoBrowserBinding
     }
 
     // @interface MWTapDetectingView : UIView
-    [BaseType(typeof(UIView), Name = "MWTapDetectingView")]
-    interface TapDetectingView
+    [BaseType(typeof(UIView))]
+    interface MWTapDetectingView
     {
-        // @property (nonatomic, weak) id<MWTapDetectingViewDelegate> _Nullable tapDelegate;
-        [NullAllowed, Export("tapDelegate", ArgumentSemantic.Weak)]
-        ITapDetectingViewDelegate TapDelegate { get; set; }
-    }
+        [Wrap("WeakTapDelegate")]
+        IMWTapDetectingViewDelegate TapDelegate { get; set; }
 
-    interface ITapDetectingViewDelegate { }
+        // @property (nonatomic, weak) id<MWTapDetectingViewDelegate> tapDelegate;
+        [NullAllowed, Export("tapDelegate", ArgumentSemantic.Weak)]
+        NSObject WeakTapDelegate { get; set; }
+    }
 
     // @protocol MWTapDetectingViewDelegate <NSObject>
     [Protocol, Model]
-    [BaseType(typeof(NSObject), Name = "MWTapDetectingViewDelegate")]
-    interface TapDetectingViewDelegate
+    [BaseType(typeof(NSObject))]
+    interface IMWTapDetectingViewDelegate
     {
         // @optional -(void)view:(UIView *)view singleTapDetected:(UITouch *)touch;
         [Export("view:singleTapDetected:")]
@@ -369,8 +322,8 @@ namespace MWPhotoBrowserBinding
     }
 
     // @interface MWZoomingScrollView : UIScrollView <UIScrollViewDelegate, MWTapDetectingImageViewDelegate, MWTapDetectingViewDelegate>
-    [BaseType(typeof(UIScrollView), Name = "MWZoomingScrollView")]
-    interface ZoomingScrollView : IUIScrollViewDelegate, TapDetectingImageViewDelegate, TapDetectingViewDelegate
+    [BaseType(typeof(UIScrollView))]
+    interface MWZoomingScrollView : IUIScrollViewDelegate, IMWTapDetectingImageViewDelegate, IMWTapDetectingViewDelegate
     {
         // @property NSUInteger index;
         [Export("index")]
@@ -378,19 +331,23 @@ namespace MWPhotoBrowserBinding
 
         // @property (nonatomic) id<MWPhoto> photo;
         [Export("photo", ArgumentSemantic.Assign)]
-        IPhoto Photo { get; set; }
+        MWPhoto Photo { get; set; }
 
-        // @property (nonatomic, weak) MWCaptionView * _Nullable captionView;
-        [NullAllowed, Export("captionView", ArgumentSemantic.Weak)]
-        CaptionView CaptionView { get; set; }
+        // @property (nonatomic, weak) MWCaptionView * captionView;
+        [Export("captionView", ArgumentSemantic.Weak)]
+        MWCaptionView CaptionView { get; set; }
 
-        // @property (nonatomic, weak) UIButton * _Nullable selectedButton;
-        [NullAllowed, Export("selectedButton", ArgumentSemantic.Weak)]
+        // @property (nonatomic, weak) UIButton * selectedButton;
+        [Export("selectedButton", ArgumentSemantic.Weak)]
         UIButton SelectedButton { get; set; }
 
-        // @property (nonatomic, weak) UIButton * _Nullable playButton;
-        [NullAllowed, Export("playButton", ArgumentSemantic.Weak)]
+        // @property (nonatomic, weak) UIButton * playButton;
+        [Export("playButton", ArgumentSemantic.Weak)]
         UIButton PlayButton { get; set; }
+
+        // @property (nonatomic) MWTapDetectingView * tapView;
+        [Export("tapView", ArgumentSemantic.Assign)]
+        MWTapDetectingView TapView { get; set; }
 
         // -(id)initWithPhotoBrowser:(MWPhotoBrowser *)browser;
         [Export("initWithPhotoBrowser:")]
@@ -414,10 +371,43 @@ namespace MWPhotoBrowserBinding
 
         // -(BOOL)displayingVideo;
         [Export("displayingVideo")]
-        bool IsDisplayingVideo { get; }
+        bool DisplayingVideo { get; }
 
         // -(void)setImageHidden:(BOOL)hidden;
         [Export("setImageHidden:")]
         void SetImageHidden(bool hidden);
+    }
+
+    // @interface MWPhotoBrowser (UIImage)
+    //[BaseType(typeof(NSObject))]
+    //interface UIImage
+    //{
+    //    // +(UIImage *)imageForResourcePath:(NSString *)path ofType:(NSString *)type inBundle:(NSBundle *)bundle;
+    //    [Static]
+    //    [Export("imageForResourcePath:ofType:inBundle:")]
+    //    UIImage ImageForResourcePath(string path, string type, NSBundle bundle);
+
+    //    // +(UIImage *)clearImageWithSize:(CGSize)size;
+    //    [Static]
+    //    [Export("clearImageWithSize:")]
+    //    UIImage ClearImageWithSize(CGSize size);
+    //}
+
+    // @interface MWCaptionView : UIToolbar
+    [BaseType(typeof(UIToolbar))]
+    interface MWCaptionView
+    {
+        // -(id)initWithPhoto:(id<MWPhoto>)photo;
+        [Export("initWithPhoto:")]
+        IntPtr Constructor(IMWPhoto photo);
+
+        // -(void)setupCaption;
+        [Export("setupCaption")]
+        void SetupCaption();
+
+        // -(CGSize)sizeThatFits:(CGSize)size;
+        [Override]
+        [Export("sizeThatFits:")]
+        CGSize SizeThatFits(CGSize size);
     }
 }
