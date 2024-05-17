@@ -36,15 +36,17 @@ namespace PhotoBrowsers.Platforms.iOS
                 _photos.Add(mp);
             }
 
-            MWPhotoBrowserBinding.PhotoBrowser browser = new MWPhotoBrowserBinding.PhotoBrowser(this)
+            MWPhotoBrowser browser = new MWPhotoBrowser(this)
             {
                 EnableGrid = false,
                 ZoomPhotosToFill = true,
                 DisplaySelectionButtons = false,
                 DisplayActionButton = true,
                 AlwaysShowControls = true,
+                DisplayNavArrows=true,
             };
 
+            browser.EnableSwipeToDismiss = false;
 
             browser.CurrentIndex = (nuint)_photoBrowser.StartIndex;
 
@@ -59,9 +61,29 @@ namespace PhotoBrowsers.Platforms.iOS
             vc.PresentViewController(new UINavigationController(browser), true, null);
         }
 
-        public override PhotoBrowserPhoto GetPhoto(MWPhotoBrowserBinding.PhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
+        public override PhotoBrowserPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
 
-        public override nuint GetPhotoCount(MWPhotoBrowserBinding.PhotoBrowser photoBrowser) => (nuint)_photos.Count;
+        public override nuint GetPhotoCount(MWPhotoBrowser photoBrowser) => (nuint)_photos.Count;
+
+        public override IPhoto GetThumbnail(MWPhotoBrowser photoBrowser, nuint index)
+        {
+            return base.GetThumbnail(photoBrowser, index);
+        }
+
+        public override bool IsPhotoSelected(MWPhotoBrowser photoBrowser, nuint index)
+        {
+            return base.IsPhotoSelected(photoBrowser, index);
+        }
+
+        public override void OnSelectedChanged(MWPhotoBrowser photoBrowser, nuint index, bool selected)
+        {
+            Console.WriteLine("Photo at index {0} selected ? {1}.", index, selected);
+        }
+
+        public override void DidDisplayPhoto(MWPhotoBrowser photoBrowser, nuint index)
+        {
+            Console.WriteLine("Did start viewing photo at index {0}.", index);
+        }
 
         public void Close()
         {

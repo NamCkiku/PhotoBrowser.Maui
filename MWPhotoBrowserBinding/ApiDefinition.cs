@@ -140,49 +140,49 @@ namespace MWPhotoBrowserBinding
         // @required -(NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
         [Abstract]
         [Export("numberOfPhotosInPhotoBrowser:")]
-        nuint GetPhotoCount(PhotoBrowser photoBrowser);
+        nuint GetPhotoCount(MWPhotoBrowser photoBrowser);
 
         // @required -(id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
         [Abstract]
         [Export("photoBrowser:photoAtIndex:")]
-        IPhoto GetPhoto(PhotoBrowser photoBrowser, nuint index);
+        IPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:thumbPhotoAtIndex:")]
-        IPhoto GetThumbnail(PhotoBrowser photoBrowser, nuint index);
+        IPhoto GetThumbnail(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:captionViewForPhotoAtIndex:")]
-        CaptionView GetCaptionView(PhotoBrowser photoBrowser, nuint index);
+        CaptionView GetCaptionView(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:titleForPhotoAtIndex:")]
-        string GetTitle(PhotoBrowser photoBrowser, nuint index);
+        string GetTitle(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:didDisplayPhotoAtIndex:")]
-        void DidDisplayPhoto(PhotoBrowser photoBrowser, nuint index);
+        void DidDisplayPhoto(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(void)photoBrowser:(MWPhotoBrowser *)photoBrowser actionButtonPressedForPhotoAtIndex:(NSUInteger)index;
         [Export("photoBrowser:actionButtonPressedForPhotoAtIndex:")]
-        void OnActionButtonPressed(PhotoBrowser photoBrowser, nuint index);
+        void OnActionButtonPressed(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index;
         [Export("photoBrowser:isPhotoSelectedAtIndex:")]
-        bool IsPhotoSelected(PhotoBrowser photoBrowser, nuint index);
+        bool IsPhotoSelected(MWPhotoBrowser photoBrowser, nuint index);
 
         // @optional -(void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected;
         [Export("photoBrowser:photoAtIndex:selectedChanged:")]
-        void OnSelectedChanged(PhotoBrowser photoBrowser, nuint index, bool selected);
+        void OnSelectedChanged(MWPhotoBrowser photoBrowser, nuint index, bool selected);
 
         // @optional -(void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser;
         [Export("photoBrowserDidFinishModalPresentation:")]
-        void DidFinishModalPresentation(PhotoBrowser photoBrowser);
+        void DidFinishModalPresentation(MWPhotoBrowser photoBrowser);
     }
 
     // @interface MWPhotoBrowser : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate>
     [BaseType(typeof(UIViewController), Name = "MWPhotoBrowser")]
-    interface PhotoBrowser : IUIScrollViewDelegate, IUIActionSheetDelegate
+    interface MWPhotoBrowser : IUIScrollViewDelegate, IUIActionSheetDelegate
     {
         // @property (nonatomic, weak) id<MWPhotoBrowserDelegate> _Nullable delegate __attribute__((iboutlet));
         [NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
@@ -266,7 +266,7 @@ namespace MWPhotoBrowserBinding
     {
         // @property (assign, nonatomic) MWPhotoBrowser * browser;
         [Export("browser", ArgumentSemantic.Assign)]
-        PhotoBrowser Browser { get; set; }
+        MWPhotoBrowser Browser { get; set; }
 
         // @property (nonatomic) BOOL selectionMode;
         [Export("selectionMode")]
@@ -394,7 +394,7 @@ namespace MWPhotoBrowserBinding
 
         // -(id)initWithPhotoBrowser:(MWPhotoBrowser *)browser;
         [Export("initWithPhotoBrowser:")]
-        IntPtr Constructor(PhotoBrowser browser);
+        IntPtr Constructor(MWPhotoBrowser browser);
 
         // -(void)displayImage;
         [Export("displayImage")]
@@ -420,20 +420,4 @@ namespace MWPhotoBrowserBinding
         [Export("setImageHidden:")]
         void SetImageHidden(bool hidden);
     }
-
-    //	// @interface MWPhotoBrowser (UIImage)
-    //	[Static]
-    //	[BaseType (typeof(NSObject), Name = "UIImage")]
-    //	interface PhotoBrowserImage
-    //	{
-    //		// +(UIImage *)imageForResourcePath:(NSString *)path ofType:(NSString *)type inBundle:(NSBundle *)bundle;
-    //		[Static]
-    //		[Export ("imageForResourcePath:ofType:inBundle:")]
-    //		UIImage CreateImageForResourcePath (string path, string type, NSBundle bundle);
-    //
-    //		// +(UIImage *)clearImageWithSize:(CGSize)size;
-    //		[Static]
-    //		[Export ("clearImageWithSize:")]
-    //		UIImage CreateClearImage (CGSize size);
-    //	}
 }

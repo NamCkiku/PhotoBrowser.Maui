@@ -59,7 +59,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.8</Version>
+		<Version>1.0.9</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -88,9 +88,7 @@
 		<NativeReference Include="libs\MWPhotoBrowser.a">
 			<Kind>Static</Kind>
 			<ForceLoad>True</ForceLoad>
-			<SmartLink>True</SmartLink>
 			<LinkerFlags>-ObjC</LinkerFlags>
-			<WeakFrameworks>Photos</WeakFrameworks>
 			<Frameworks>ImageIO QuartzCore AssetsLibrary MediaPlayer CoreGraphics</Frameworks>
 		</NativeReference>
 		<NativeReference Include="libs\MBProgressHUD.a">
