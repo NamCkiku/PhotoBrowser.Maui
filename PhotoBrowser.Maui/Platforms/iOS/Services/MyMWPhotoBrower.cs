@@ -11,11 +11,11 @@ using UIKit;
 
 namespace PhotoBrowsers.Platforms.iOS
 {
-    public class MyMWPhotoBrower : MWPhotoBrowserDelegate
+    public class MyMWPhotoBrower : PhotoBrowserDelegate
     {
         protected PhotoBrowser _photoBrowser;
 
-        protected List<MWPhoto> _photos = new List<MWPhoto>();
+        protected List<PhotoBrowserPhoto> _photos = new List<PhotoBrowserPhoto>();
 
         public MyMWPhotoBrower(PhotoBrowser photoBrowser)
         {
@@ -24,11 +24,11 @@ namespace PhotoBrowsers.Platforms.iOS
 
         public void Show()
         {
-            _photos = new List<MWPhoto>();
+            _photos = new List<PhotoBrowserPhoto>();
 
             foreach (Photo p in _photoBrowser.Photos)
             {
-                MWPhoto mp = MWPhoto.FromUrl(new Foundation.NSUrl(p.URL));
+                PhotoBrowserPhoto mp = PhotoBrowserPhoto.FromUrl(new Foundation.NSUrl(p.URL));
 
                 if (!string.IsNullOrWhiteSpace(p.Title))
                     mp.Caption = p.Title;
@@ -36,7 +36,7 @@ namespace PhotoBrowsers.Platforms.iOS
                 _photos.Add(mp);
             }
 
-            MWPhotoBrowser browser = new MWPhotoBrowser(this)
+            MWPhotoBrowserBinding.PhotoBrowser browser = new MWPhotoBrowserBinding.PhotoBrowser(this)
             {
                 EnableGrid = false,
                 ZoomPhotosToFill = true,
@@ -46,7 +46,7 @@ namespace PhotoBrowsers.Platforms.iOS
             };
 
 
-            browser.SetCurrentPhoto((nuint)_photoBrowser.StartIndex);
+            browser.CurrentIndex = (nuint)_photoBrowser.StartIndex;
 
 
             var window = UIApplication.SharedApplication.KeyWindow;
@@ -59,9 +59,9 @@ namespace PhotoBrowsers.Platforms.iOS
             vc.PresentViewController(new UINavigationController(browser), true, null);
         }
 
-        public override MWPhoto GetPhoto(MWPhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
+        public override PhotoBrowserPhoto GetPhoto(MWPhotoBrowserBinding.PhotoBrowser photoBrowser, nuint index) => _photos[(int)index];
 
-        public override nuint NumberOfPhotosInPhotoBrowser(MWPhotoBrowser photoBrowser) => (nuint)_photos.Count;
+        public override nuint GetPhotoCount(MWPhotoBrowserBinding.PhotoBrowser photoBrowser) => (nuint)_photos.Count;
 
         public void Close()
         {

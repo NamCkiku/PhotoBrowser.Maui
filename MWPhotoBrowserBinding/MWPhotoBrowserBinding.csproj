@@ -59,7 +59,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<AssemblyFileVersion>$(Version)</AssemblyFileVersion>
-		<Version>1.0.7</Version>
+		<Version>1.0.8</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageVersion>$(VersionPrefix)$(Version)$(VersionSuffix)</PackageVersion>
@@ -74,7 +74,7 @@
 		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<None Update="libs\*.a" Visible="False" />
 	</ItemGroup>
@@ -88,8 +88,10 @@
 		<NativeReference Include="libs\MWPhotoBrowser.a">
 			<Kind>Static</Kind>
 			<ForceLoad>True</ForceLoad>
+			<SmartLink>True</SmartLink>
 			<LinkerFlags>-ObjC</LinkerFlags>
-			<Frameworks>MessageUI QuartzCore SystemConfiguration MobileCoreServices Security</Frameworks>
+			<WeakFrameworks>Photos</WeakFrameworks>
+			<Frameworks>ImageIO QuartzCore AssetsLibrary MediaPlayer CoreGraphics</Frameworks>
 		</NativeReference>
 		<NativeReference Include="libs\MBProgressHUD.a">
 			<Kind>Static</Kind>
