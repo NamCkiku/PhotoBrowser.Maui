@@ -22,6 +22,7 @@ namespace PhotoBrowsers.Platforms.Android
             intent.AddFlags(ActivityFlags.NewTask);
             Bundle b = new Bundle();
             b.PutStringArrayList("PhotoBrowser", photoBrowser.Photos.Select(x => x.URL).ToArray());
+            b.PutInt("PhotoBrowserIndex", photoBrowser.StartIndex);
             intent.PutExtras(b);
             Application.Context.StartActivity(intent);
         }

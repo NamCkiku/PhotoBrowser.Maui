@@ -38,20 +38,22 @@ namespace GPSMobile.BA
 
             SetContentView(Resource.Layout.gallery_slide);
             Intent myIntent = this.Intent;
+            var startindex = myIntent.GetIntExtra("PhotoBrowserIndex", 0);
             var items = myIntent.GetStringArrayListExtra("PhotoBrowser");
             if (items != null && items.Count > 0)
             {
-                InitComponents(items.ToList());
+                InitComponents(items.ToList(), startindex);
             }
+
         }
 
-        protected void InitComponents(List<string> urls)
+        protected void InitComponents(List<string> urls, int startindex = 0)
         {
 
             _adapter = new GallerySlidePageAdapter(this, urls);
             _viewPager = FindViewById<ViewPager>(Resource.Id.pager);
             _viewPager.Adapter = _adapter;
-            _viewPager.SetCurrentItem(3, false); // start item
+            _viewPager.SetCurrentItem(startindex, false); // start item
             _viewPager.OffscreenPageLimit = 10;
             _viewPager.PageSelected += OnPageSelected;
             _viewPager.PageScrollStateChanged += ViewPager_PageScrollStateChanged;

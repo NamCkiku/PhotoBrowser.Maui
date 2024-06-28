@@ -64,6 +64,7 @@ namespace PhotoBrowser.Sample
                         Title = "Daniel"
                     }
                 },
+                StartIndex = 3
             }.Show();
         }
     }
