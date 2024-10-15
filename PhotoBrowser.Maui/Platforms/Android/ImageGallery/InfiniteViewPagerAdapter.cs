@@ -11,7 +11,7 @@ namespace PhotoBrowser.Maui.Platforms.Android.ImageGallery
     {
         // Since we want to put 2 additional pages at left & right,
         // the actual size will plus 2.
-        public override int Count => RealCount == 0 ? 0 : RealCount + 2;
+        public override int Count => RealCount == 0 ? 0 : RealCount;
 
         public abstract int RealCount { get; }
 

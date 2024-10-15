@@ -18,7 +18,7 @@ namespace PhotoBrowser.Sample
             {
                 Photos = new List<Photo>
                 {
-                    new Photo
+                   new Photo
                     {
                         URL = "https://raw.githubusercontent.com/stfalcon-studio/FrescoImageViewer/v.0.5.0/images/posters/Vincent.jpg",
                         Title = "Vincent"
