@@ -31,7 +31,7 @@ namespace PhotoBrowser.Maui.Platforms.Android.ImageGallery
 
         public override JObject InstantiateItem(ViewGroup container, int position)
         {
-            var listPosition = ToRealPosition(position);
+            var listPosition = position;
 
             global::Android.Views.View convertView;
             {

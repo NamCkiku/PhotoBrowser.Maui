@@ -27,8 +27,6 @@ namespace GPSMobile.BA
         {
             base.OnCreate(savedInstanceState);
             var uiOptions =
-                        SystemUiFlags.HideNavigation |
-                        SystemUiFlags.LayoutHideNavigation |
                         SystemUiFlags.LayoutFullscreen |
                         SystemUiFlags.Fullscreen |
                         SystemUiFlags.LayoutStable |
